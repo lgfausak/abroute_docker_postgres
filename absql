@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# absql
+# this script, the default one, starts the database
+# and binds to 5432
+#
+set -e
+
+. /usr/local/abin/abenv
+
+cd ${PG_HOME}
+
+# initialize PostgreSQL data directory
+if [ ! -d ${PG_DATADIR} ]; then
+  echo "PostgreSQL data directory doesn't exist, you need to create it with init, then mount the volume" >&2
+  exit 1
+fi
+
+echo "Starting PostgreSQL server..."
+exec sudo -u postgres -H ${PG_BINDIR}/postgres \
+  -D ${PG_DATADIR} -c config_file=${PG_CONFDIR}/postgresql.conf

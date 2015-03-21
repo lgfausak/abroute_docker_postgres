@@ -18,13 +18,13 @@ Usage will be something like this:
 Initial DB Creation
 
 ```
-docker run -name abdata tacodata/abroute_docker_postgres init
+docker run -name abdata tacodata/abroute_docker_postgres abinit
 ```
 
 Once you have a database instance (called abdata) you use it like this:
 
 ```
-docker run -name pgsql --volumes-from abdata tacodata/abroute_docker_postgres sql 
+docker run -name pgsql --volumes-from abdata tacodata/abroute_docker_postgres absql 
 ```
 
 These two commands need to be run the first time, but, after that, you don't ever run the init
@@ -35,12 +35,5 @@ a blank one.
 
 ![alt text][docker_containers]
 
-reasons.  There isn't any reason the code in these two places couldn't
-do a call to the db.info rpc to determine the type of database that is
-connected, then customize the query accordingly.  I'm just not concerned
-with database portability at this moment, so I am stopping work on this
-aspect.  Contact me if you need help writing a driver for a different
-database, I would be happy to help.
 
 [docker_containers]:https://github.com/lgfausak/sqlauth/raw/master/docs/docker_containers.png "Docker Containers"
-
