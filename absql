@@ -17,5 +17,5 @@ if [ ! -d ${PG_DATADIR} ]; then
 fi
 
 echo "Starting PostgreSQL server..."
-exec sudo -u postgres -H ${PG_BINDIR}/postgres \
+sudo -u postgres -H ${PG_BINDIR}/postgres \
   -D ${PG_DATADIR} -c config_file=${PG_CONFDIR}/postgresql.conf

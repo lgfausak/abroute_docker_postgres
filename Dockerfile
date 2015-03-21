@@ -16,7 +16,7 @@ RUN apt-get update \
  && mkdir -p /usr/local/abin /usr/local/aetc \
  && chmod 755 /usr/local/abin
 
-COPY PG.sql abenv abinit absql /usr/local/abin/
+COPY PG.sql abenv ab abinit absql /usr/local/abin/
 RUN chmod 755 \
     /usr/local/abin/abinit \
     /usr/local/abin/absql
@@ -26,4 +26,5 @@ EXPOSE 5432
 VOLUME ["/var/lib/postgresql"]
 VOLUME ["/run/postgresql"]
 
-CMD ["/usr/local/abin/absql"]
+ENTRYPOINT ["/usr/local/abin/ab"]
+CMD ["absql"]

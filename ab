@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# absql
+# this script, the default one, starts the database
+# and binds to 5432
+#
+cmd_name=$1
+shift
+exec /usr/local/abin/${cmd_name} $@
