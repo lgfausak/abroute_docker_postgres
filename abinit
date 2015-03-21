@@ -109,7 +109,10 @@ echo "Done with initialization ... now seeding database with starting data"
 
 echo "Starting PostgreSQL server..."
 /etc/init.d/postgresql start
-exec sudo psql -Upostgres -h localhost -f /usr/local/abin/PG.sql ${DB_NAME}
+
+sudo psql -Upostgres -h $(hostname -i) -f /usr/local/abin/PG.sql ${DB_NAME}
+
 /etc/init.d/postgresql stop
 
 echo "Done with initialization ... database "$DB_NAME" is ready to use"
+

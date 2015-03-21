@@ -16,3 +16,5 @@ DB_USER=autouser
 DB_PASS=123test
 
 export DB_NAME DB_USER DB_PASS
+
+set -o vi
