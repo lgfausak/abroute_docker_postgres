@@ -14,7 +14,7 @@ RUN apt-get update \
  && mkdir -p /usr/local/abin \
  && chmod 755 /usr/local/abin
 
-COPY abenv abinit absql /usr/local/abin/.
+COPY abenv abinit absql /usr/local/abin/
 RUN chmod 755 \
     /usr/local/abin/abinit \
     /usr/local/abin/absql
