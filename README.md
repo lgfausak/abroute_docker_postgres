@@ -35,5 +35,13 @@ a blank one.
 
 ![alt text][docker_containers]
 
+The containers this repo is working on is the top one 'Postgres' and the 'db' container.
+When we run our abinit script we create a volume suitable for mounting. In our example
+above the init run creates an instance called 'abdata'. 'abdata' is represented by 'db'
+in the picture. abdata provides two volumes. /var/lib/postgres contains the data for the database.
+It is initialized with the 'adm' user and the 'sys' user.  It is suitable to
+build an application on top. Also, the /run/postgresql is mountable and contains
+the runtime information (basically the pid).
+
 
 [docker_containers]:https://github.com/lgfausak/sqlauth/raw/master/docs/docker_containers.png "Docker Containers"
