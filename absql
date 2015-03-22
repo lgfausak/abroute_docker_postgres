@@ -16,17 +16,8 @@ if [ ! -d ${PG_DATADIR} ]; then
   exit 1
 fi
 
-#echo "Starting PostgreSQL server..."
-#sudo -u postgres -H ${PG_BINDIR}/postgres \
-#  -D ${PG_DATADIR} -c config_file=${PG_CONFDIR}/postgresql.conf
-
 echo "Starting PostgreSQL server..."
-/etc/init.d/postgresql start
+exec sudo -u postgres -H ${PG_BINDIR}/postgres \
+  -D ${PG_DATADIR} -c config_file=${PG_CONFDIR}/postgresql.conf
 
-echo "[hit enter key to exit or run 'docker stop <container>'"
-read
-
-/etc/init.d/postgresql stop
-
-echo "shutdown successful"
 
