@@ -6,7 +6,7 @@
 #
 set -e
 
-. /usr/local/abin/abenv
+. /usr/local/etc/abenv
 
 cd ${PG_HOME}
 
@@ -19,5 +19,3 @@ fi
 echo "Starting PostgreSQL server..."
 exec sudo -u postgres -H ${PG_BINDIR}/postgres \
   -D ${PG_DATADIR} -c config_file=${PG_CONFDIR}/postgresql.conf
-
-

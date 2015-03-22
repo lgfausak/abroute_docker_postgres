@@ -7,7 +7,7 @@
 #
 set -e
 
-. /usr/local/abin/abenv
+. /usr/local/etc/abenv
 
 # fix permissions and ownership of ${PG_HOME}
 mkdir -p -m 0700 ${PG_HOME}
@@ -110,7 +110,7 @@ echo "Done with initialization ... now seeding database with starting data"
 echo "Starting PostgreSQL server..."
 /etc/init.d/postgresql start
 
-sudo psql -Upostgres -h $(hostname -i) -f /usr/local/abin/PG.sql ${DB_NAME}
+sudo psql -Upostgres -h $(hostname -i) -f /usr/local/etc/PG.sql ${DB_NAME}
 
 /etc/init.d/postgresql stop
 
