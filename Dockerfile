@@ -24,6 +24,7 @@ RUN chmod 755 \
 EXPOSE 5432
 
 VOLUME ["/var/lib/postgresql"]
+VOLUME ["/etc/postgresql"]
 VOLUME ["/run/postgresql"]
 
 ENTRYPOINT ["/usr/local/abin/ab"]
