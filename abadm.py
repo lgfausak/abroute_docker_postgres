@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 import web
-from subprocess import call
+import subprocess
 
 urls = (
         "/(dbinit.*)", "dbinit"
