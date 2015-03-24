@@ -110,9 +110,14 @@ echo "Done with initialization ... now seeding database with starting data"
 echo "Starting PostgreSQL server..."
 /etc/init.d/postgresql start
 
-sudo psql -Upostgres -h $(hostname -i) -f /usr/local/etc/PG.sql ${DB_NAME}
+psql -Upostgres -h $(hostname -i) -f /usr/local/etc/PG.sql ${DB_NAME}
 
 /etc/init.d/postgresql stop
 
 echo "Done with initialization ... database "$DB_NAME" is ready to use"
+
+echo "chaining abadm.py"
+
+exec "abadm.py"
+
 

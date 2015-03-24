@@ -7,10 +7,10 @@ urls = (
         "/(dbinit.*)", "dbinit"
     )
 
-
 class dbinit:
     def GET(self, path):
-        rv = subprocess.check_output("abinit",stderr=subprocess.STDOUT,shell=True)
+#        rv = subprocess.check_output("abinit",stderr=subprocess.STDOUT,shell=True)
+        rv = 'not doing anything here'
         return rv
 
 class index:
