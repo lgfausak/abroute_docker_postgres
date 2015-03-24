@@ -8,18 +8,30 @@ set -e
 
 . /usr/local/etc/abenv
 
-host=$(env | grep _TCP_ADDR | cut -d = -f 2)
-port=$(env | grep _TCP_PORT | cut -d = -f 2)
+#
+# check for linked dependencies
+#
+hosts=($(env | grep _TCP_ADDR | cut -d = -f 1))
+ports=($(env | grep _TCP_PORT | cut -d = -f 1))
 
-echo -n "waiting for TCP connection to $host:$port..."
-
-while ! nc -w 1 $host $port 2>/dev/null
+pl=$(for host in ${hosts[@]};
 do
-  echo -n .
-  sleep 1
-done
+  port=$(echo $host | sed 's/_ADDR/_PORT/')
+  hosti=$(env | egrep ^$host | cut -d = -f 2)
+  porti=$(env | egrep ^$port | cut -d = -f 2)
+  echo $hosti:$porti
+done | sort -u)
 
-echo 'done waiting'
+for p in $pl
+do
+  echo waiting for $p
+  while ! nc -w 1 $p 2>/dev/null
+  do
+    echo -n .
+    sleep 1
+  done
+  echo 'X'
+done
 
 cd ${PG_HOME}
 
