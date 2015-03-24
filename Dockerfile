@@ -8,7 +8,7 @@ FROM tacodata/abroute-docker-base
 MAINTAINER Greg Fausak <greg@tacodata.com>
 
 COPY PG.sql /usr/local/etc/
-COPY abinit absql /usr/local/bin/
+COPY abinit absql abadm.py /usr/local/bin/
 
 EXPOSE 5432
 
@@ -18,3 +18,4 @@ VOLUME ["/run/postgresql"]
 
 #CMD ["abinit"]
 CMD ["absql"]
+#CMD ["abadm.py"]
