@@ -7,6 +7,8 @@ FROM tacodata/abroute-docker-base
 
 MAINTAINER Greg Fausak <greg@tacodata.com>
 
+RUN pip install web.py
+
 COPY PG.sql /usr/local/etc/
 COPY abinit absql abadm.py /usr/local/bin/
 
