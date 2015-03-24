@@ -10,7 +10,7 @@ urls = (
 
 class dbinit:
     def GET(self, path):
-        rv = call.check_output("abinit",stderr=subprocess.STDOUT,shell=True)
+        rv = subprocess.check_output("abinit",stderr=subprocess.STDOUT,shell=True)
         return rv
 
 class index:
