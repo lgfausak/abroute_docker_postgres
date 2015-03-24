@@ -1,9 +1,12 @@
 #!/bin/bash
 #
-# abinit
+# abinit [ port ]
 #   this script sets up the database with users, database, and seeds it with initial data
 #   run this once, first, before running the sql container.
 #   then, run this again, as a new container, mounting the container you created with init.
+#
+# when finished it can idle on a port with a web server that does nothing.
+# this can be handy for orchestrating initial startup
 #
 set -e
 
@@ -118,6 +121,4 @@ echo "Done with initialization ... database "$DB_NAME" is ready to use"
 
 echo "chaining abadm.py"
 
-exec "abadm.py"
-
-
+exec "abadm.py" $@
