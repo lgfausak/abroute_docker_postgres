@@ -15,4 +15,4 @@ VOLUME ["/var/lib/postgresql"]
 VOLUME ["/etc/postgresql"]
 VOLUME ["/run/postgresql"]
 
-ENTRYPOINT "absql"
+ENTRYPOINT ["absql"]
