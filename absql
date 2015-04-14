@@ -9,12 +9,12 @@ set -e
 . /usr/local/etc/abenv
 
 # wait for dependencies, abort after DEFAULT_WAIT_TIME seconds
-if [ "${DEFAULT_WAIT_TYPE}" == "file" ]; then
-  echo 'waiting for file' "${DEFAULT_WAIT_FILE}" ${DEFAULT_WAIT_TIME}
-  waitforfile "${DEFAULT_WAIT_FILE}" ${DEFAULT_WAIT_TIME}
+if [ "${WAIT_TYPE-$DEFAULT_WAIT_TYPE}" == "file" ]; then
+  echo 'waiting for file' "${WAIT_FILE-$DEFAULT_WAIT_FILE}" ${WAIT_TIME-$DEFAULT_WAIT_TIME}
+  waitforfile "${WAIT_FILE-$DEFAULT_WAIT_FILE}" ${WAIT_TIME-$DEFAULT_WAIT_TIME}
 else
-  echo 'waiting for ethernet' ${DEFAULT_WAIT_TIME}
-  waitforlink ${DEFAULT_WAIT_TIME}
+  echo 'waiting for ethernet' ${WAIT_TIME-$DEFAULT_WAIT_TIME}
+  waitforlink ${WAIT_TIME-$DEFAULT_WAIT_TIME}
 fi
 
 if [ $? -ne 0 ]
