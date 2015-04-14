@@ -8,8 +8,15 @@ set -e
 
 . /usr/local/etc/abenv
 
-# wait for dependencies, abort after 60 seconds
-waitforlink 60
+# wait for dependencies, abort after DEFAULT_WAIT_TIME seconds
+if [ "${DEFAULT_WAIT_TYPE}" == "file" ]; then
+  echo 'waiting for file' "${DEFAULT_WAIT_FILE}" ${DEFAULT_WAIT_TIME}
+  waitforfile "${DEFAULT_WAIT_FILE}" ${DEFAULT_WAIT_TIME}
+else
+  echo 'waiting for ethernet' ${DEFAULT_WAIT_TIME}
+  waitforlink ${DEFAULT_WAIT_TIME}
+fi
+
 if [ $? -ne 0 ]
 then
   echo 'Link with dependencies failed' >&2
